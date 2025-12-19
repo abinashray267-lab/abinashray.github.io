@@ -408,3 +408,56 @@ ul li span {
         box-shadow: 0 0 28px rgba(155,107,255,0.65);
     }
 
+/* ---------------------------------------------- */
+/* PROFILE IMAGE – HOME PAGE                      */
+/* ---------------------------------------------- */
+
+.home-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.profile-wrapper {
+    flex-shrink: 0;
+}
+
+.profile-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--neon);
+    box-shadow: 0 0 25px rgba(0,242,255,0.6), 0 0 60px rgba(155,107,255,0.25);
+    animation: profileGlow 3s infinite alternate ease-in-out;
+}
+
+@keyframes profileGlow {
+    from {
+        box-shadow: 0 0 18px rgba(0,242,255,0.4), 0 0 40px rgba(155,107,255,0.15);
+    }
+
+    to {
+        box-shadow: 0 0 30px rgba(0,242,255,0.7), 0 0 70px rgba(155,107,255,0.35);
+    }
+}
+
+.home-text {
+    max-width: 700px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .home-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+
