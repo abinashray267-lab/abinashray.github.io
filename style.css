@@ -1,0 +1,410 @@
+/* assets/style.css - Neon Cyberpunk theme with Modern Animations */
+
+/* --------------------------------------------------------- */
+/* GLOBAL VARIABLES                                           */
+/* --------------------------------------------------------- */
+:root {
+  --bg-1: #020617;
+  --bg-2: #061432;
+  --neon: #00f2ff;
+  --accent: #9b6bff;
+  --muted: rgba(255,255,255,0.38);
+  --glass: rgba(255,255,255,0.04);
+}
+
+/* --------------------------------------------------------- */
+/* GLOBAL RESET + FONT                                        */
+/* --------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Space Grotesk","Sora","Poppins",sans-serif;
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  color: #e9fbff;
+  overflow-x: visible;
+  transition: opacity .45s ease-in-out;
+}
+
+/* --------------------------------------------------------- */
+/* HEADER NAVIGATION                                          */
+/* --------------------------------------------------------- */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 30px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  overflow: visible;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--neon);
+  letter-spacing: 0.6px;
+  text-shadow: 0 0 18px rgba(0,242,255,0.3);
+}
+
+.header nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    /* flex-wrap: nowrap; keep single row */
+    overflow: visible; /* IMPORTANT */
+    flex-wrap: nowrap;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.header nav a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.78);
+  font-weight: 500;
+  font-size: 17px;
+  transition: all .25s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.header nav a:hover,
+.header nav a.active {
+  color: var(--neon);
+  text-shadow: 0 0 12px rgba(0,242,255,0.55);
+  transform: translateY(-2px);
+  position: relative;
+}
+nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: var(--neon);
+}
+
+/* --------------------------------------------------------- */
+/* HERO / HOME SECTION                                        */
+/* --------------------------------------------------------- */
+.home-container {
+  max-width: 1100px;
+  margin: 140px auto 0;
+  padding: 0 25px;
+  animation: fadeUp .9s ease forwards;
+  opacity: 0;
+}
+.section.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;   /* <- key for centering text */
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.section.home {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.section.home h2 {
+  font-size: 46px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--neon);
+  text-shadow: 0 0 18px rgba(0,242,255,0.25);
+  animation: glow 2.4s infinite alternate ease-in-out;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 14px rgba(0,242,255,0.15); }
+  to { text-shadow: 0 0 24px rgba(0,242,255,0.5); }
+}
+
+.role-title {
+  color: #dff9ff;
+  font-weight: 600;
+  margin-bottom: 14px;
+  font-size: 24px;
+  letter-spacing: 0.4px;
+}
+
+/* --------------------------------------------------------- */
+/* STREAM SUMMARY / TYPE ANIMATION                            */
+/* --------------------------------------------------------- */
+.stream-summary {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  min-height: 95px;
+  line-height: 1.55;
+  transition: all .25s ease;
+  cursor: pointer;
+  animation: fadeIn .9s ease forwards;
+  opacity: 0;
+}
+
+.full-summary {
+  opacity: .42;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #eaf6fb;
+  margin-top: 24px;
+  text-align: justify;
+  display: none;
+  animation: fadeIn .6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stream-summary span {
+  color: var(--accent);
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(155,107,255,0.55);
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: .55; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* --------------------------------------------------------- */
+/* ELEMENTS SHARED ACROSS PAGES                               */
+/* --------------------------------------------------------- */
+.container { max-width: 1100px; margin: 110px auto; padding: 0 28px; }
+.section-title { font-size: 28px; color: var(--accent); margin-bottom: 14px;  text-align: center;/* ← Center the heading */width: 100%;/* Ensures full row width */display: block; }
+.box { background: var(--glass); border-radius: 12px; padding: 18px; margin: 14px 0; border: 1px solid rgba(255,255,255,0.03); }
+
+.project-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding: 14px; border-radius: 10px; margin: 12px 0; border-left: 4px solid rgba(155,107,255,0.18); }
+
+/* --------------------------------------------------------- */
+/* BULLET STYLE FIX FOR RESUME SUMMARY                        */
+/* --------------------------------------------------------- */
+ul {
+  list-style-type: disc;
+  padding-left: 22px;
+}
+
+ul li {
+  display: list-item;       /* keep bullets */
+  white-space: normal;      /* keep single-line flowing sentence */
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+ul li span {
+  white-space: nowrap;      /* keeps 9+, 150+ or names together */
+}
+/* Bullet alignment for resume summary */
+.summary-list {
+  list-style-type: disc;
+  padding-left: 26px;
+  margin-top: 10px;
+  display: block;
+}
+
+.summary-list li {
+  margin-bottom: 12px;
+  font-size: 18px;
+  line-height: 1.55;
+  text-align: justify;       /* fixes alignment on both left & right */
+  white-space: normal;       /* prevents early line breaks */
+}
+
+.summary-list li span {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;       /* keeps phrases like 9+ years, 150+ together */
+}
+#streamSummary {
+  white-space: normal !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  display: block;
+  text-align: justify;
+}
+
+#fullSummary {
+  white-space: normal !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  text-align: justify;
+}
+.stream-summary, .full-summary {
+  white-space: normal !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6;
+}
+
+
+/* --------------------------------------------------------- */
+/* RESPONSIVE                                                 */
+/* --------------------------------------------------------- */
+@media(max-width:880px) {
+  .header { padding: 12px 18px; }
+  .home-container { margin-top: 100px; }
+  .container { padding: 0 16px; margin-top: 88px; }
+  .section.home h2 { font-size: 32px; }
+  .stream-summary { font-size: 18px; }
+}
+/* ---------------------------------------------- */
+/* EXPERIENCE PAGE ENHANCEMENTS                   */
+/* ---------------------------------------------- */
+
+.exp-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.35;
+  color: #eaffff;
+}
+
+.designation {
+  display: block;
+  font-size: 18px;
+  margin-top: 4px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00f2ff, #9b6bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(0,242,255,0.3);
+}
+
+.duration {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 15px;
+  opacity: 0.85;
+}
+.Client {
+  display: block;
+  font-size: 18px;
+  margin-top: 4px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00f2ff, #9b6bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(0,242,255,0.3);
+}
+.company-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin: 25px 0 35px;
+  background: linear-gradient(90deg, #00eaff, #b400ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+.category-title {
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 12px;
+  color: var(--accent);
+  border-left: 4px solid var(--accent);
+  padding-left: 10px;
+  font-weight: 600;
+}
+.project-card h4 {
+  font-size: 18px;
+  color: #00eaff;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+/* Multi-column list styling */
+.multi-col-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  column-count: 3;               /* ✨ 3 columns on large screens */
+  column-gap: 40px;
+}
+
+.multi-col-list ul li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #d8d8d8;
+  break-inside: avoid;
+}
+
+.multi-col-list {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.multi-col-list .proj-desc {
+  margin-top: 20px;
+  color: #bfbfbf;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .multi-col-list ul {
+    column-count: 2;             /* ✨ Tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .multi-col-list ul {
+    column-count: 1;             /* ✨ Mobile */
+  }
+}
+.edu-title {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.edu-sub {
+  color: #8fc7ff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+/* Resume Download Button */
+.resume-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--neon), var(--accent));
+    color: #021025 !important;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 18px rgba(0,242,255,0.45);
+    transition: all 0.25s ease;
+}
+
+    .resume-btn:hover {
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 0 28px rgba(155,107,255,0.65);
+    }
+
