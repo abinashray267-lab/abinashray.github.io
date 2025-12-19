@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Contact | Abinash Ray</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="assets/script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Abinash Ray</div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="tech.html">Technologies</a>
+  <a href="education.html">Education</a>
+  <a href="contact.html" class="active">Contact</a>
+  <a href="https://www.linkedin.com/in/abinash-ray-3aa1aa1a0/" target="_blank">LinkedIn</a>
+
+</nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-form">
+        <form id="contactForm">
+          <input class="input" id="name" placeholder="Your name" required />
+          <input class="input" id="email" type="email" placeholder="Your email" required />
+          <input class="input" id="subject" placeholder="Subject" />
+          <textarea class="input" id="message" rows="6" placeholder="Message"></textarea>
+          <button type="submit" style="padding:10px 14px;border-radius:8px;border:none;background:linear-gradient(90deg,var(--neon, #00f2ff),var(--accent, #9b6bff));color:#021025;font-weight:700;cursor:pointer">Send</button>
+        </form>
+
+        <p style="margin-top:12px;color:var(--muted)">Or email directly: <a href="mailto:abinashray267@gmail.com" style="color:var(--neon)">abinashray267@gmail.com</a></p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Abinash Ray</footer>
+
+  <script>
+    // Simple form handler that opens mailto if JS is available.
+    document.getElementById('contactForm')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim() || 'Contact from Portfolio';
+      const message = document.getElementById('message').value.trim();
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      window.location.href = `mailto:abinashray267@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
